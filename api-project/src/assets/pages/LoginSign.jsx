@@ -3,6 +3,7 @@ import { Button, H1, ColorContainer, Input, Tagtext, Instructions } from "../../
 import { useState } from "react";
 
 const USER_REGEX = /^[a-zA-Z0-9]{3,30}$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,30}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,24}$/;
 
 
@@ -15,6 +16,9 @@ function LoginSign() {
 
   const [name, setName] = useState('');
   const [validName, setValidName] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
 
   const [pwd, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
@@ -63,8 +67,11 @@ function LoginSign() {
           </div>
           <div className="flex flex-col gap-1 w-full">
             <Tagtext>Email</Tagtext>
-            <Input text="Email"/>
-            <Instructions>
+            <Input type="text" 
+                  id="email" 
+                  change={(e) => setEmail(e.target.value)} 
+                  text="Email"/>
+            <Instructions className={ email && !validEmail ? 'hidden': 'block'}>
                 Debe de ser un nombre entre 3 y 30 caracteres <br />
                 Debe de comenzar con una letra <br/>
                 Solo puede contener letras y números
