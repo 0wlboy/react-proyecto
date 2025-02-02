@@ -1,24 +1,24 @@
 import propTypes from 'prop-types';
 
-function Input({change , type='text' , id='' ,text = 'input', bgColor='bg-green-300', brColor='border-green-500 dark:border-blue-100' }){
+function Input({change , type='text' , name='',text = 'input', bgColor='bg-green-300' }){
   return(
-    <input className= {`${bgColor} dark:bg-blue-300/80 text-white p-1.5 border-2 ${brColor} rounded-sm w-full
-    placeholder:text-gray-500 dark:placeholder:text-green-200 placeholder:italic placeholder:pl-1.5 `} 
-        type={type} 
-        id={id} 
+    <input 
+    className= {`${bgColor} dark:bg-blue-300/60 text-white py-2.5 pl-3 rounded-sm w-full
+    placeholder:text-gray-500 dark:placeholder:text-green-200/80 placeholder:italic placeholder:pl-1.5 `} 
+        type={type}  
+        name={name}
         autoComplete='off'
-        onChange={change} required
+        onChange={change} 
         placeholder= {text} />
   )
 }
 
 Input.propTypes ={
   change: propTypes.func,
-  id: propTypes.string,
+  name: propTypes.string,
   type: propTypes.string,
   text: propTypes.string,
-  bgColor: propTypes.string,
-  brColor: propTypes.string
+  bgColor: propTypes.string
   
 }
 
