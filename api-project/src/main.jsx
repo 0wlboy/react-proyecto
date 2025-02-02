@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
       <div className='bg-green-100 dark:bg-blue-950 h-screen'>
         <Routes>
           {getItem({key: 'login'}) === undefined?(
-            <Route path='/LoginSign' element={<LoginSign />}></Route>
+            <Route path='/' element={<LoginSign />}></Route>
           ) : (
             <Route path='/' element={<Home />}></Route>
           )}

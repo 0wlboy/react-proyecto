@@ -28,10 +28,10 @@ function LoginSign() {
   
   const [action, setAction] = useState('Iniciar Sesion');
 
-  const [usernameValid, setUsernameValid] = useState(false);
-  const [emailValid, setEmailValid] = useState(false);
-  const [pwdValid, setPwdValid] = useState(false); 
-  const [pwdMatch, setPwdMatch] = useState(false);
+  const [usernameValid, setUsernameValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
+  const [pwdValid, setPwdValid] = useState(true); 
+  const [pwdMatch, setPwdMatch] = useState(true);
 
   const [login, setLogin] = useState(false);
 
@@ -183,9 +183,7 @@ function LoginSign() {
                 text="Email"
               />
               {!emailValid && (<Instructions show={!emailValid}>
-                Debe de ser un nombre entre 3 y 30 caracteres <br />
-                Debe de comenzar con una letra <br />
-                Solo puede contener letras y números
+                Debe de ser un correo valido 
               </Instructions>)}
             </div>
 
@@ -198,9 +196,10 @@ function LoginSign() {
                 text="Contraseña"
               />
               {!pwdValid && (<Instructions>
-                Debe de ser un nombre entre 3 y 30 caracteres <br />
+                Debe de ser una contreseña entre 8 y 24 caracteres <br />
                 Debe de comenzar con una letra <br />
-                Solo puede contener letras y números
+                Debe de tener por lo menos una letra mayuscula y una minuscula<br />
+                Debe de tener por lo menos algunos de los sigueintes signos: #$?!%/@
               </Instructions>)}
             </div>
 
