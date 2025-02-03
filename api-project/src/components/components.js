@@ -6,3 +6,7 @@ export {default as H1} from "./general/H1";
 
 //signLogin
 export {default as Instructions} from "./signLogin/Instructions";
+
+//app
+export {default as PokemonCard} from "./app/PokemonCard";
+export {default as PokemonDetail} from "./app/PokemonDetail";

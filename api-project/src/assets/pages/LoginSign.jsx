@@ -18,6 +18,7 @@ import {
   Instructions,
 } from "../../components/components";
 import { getItem, setItem } from "../../utils/localStorage";
+import App from "./App";
 
 const USER_REGEX = /^[a-zA-Z0-9]{3,30}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,30}$/;
@@ -213,7 +214,7 @@ function LoginSign() {
               change={handleRepeatPwdChange}
               text="Contraseña" />
             </div>
-            <Link to={`/`}>
+            <Link to={`/app`}>
               <Button 
                 disable={usernameValid && emailValid && pwdValid && pwdMatch?true : false} 
                 accion={guardar}>
