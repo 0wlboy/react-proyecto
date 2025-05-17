@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import { getItem } from '../../utils/localStorage';
+import {LoginSign} from "../pages/pages";
 import { PokemonCard, PokemonDetail } from "../../components/components";
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -48,15 +50,25 @@ const App = () => {
           {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
         </button>
         <Routes>
-          <Route path="/" element={
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {pokemons.map((pokemon) => (
-                <PokemonCard key={pokemon.id} pokemon={pokemon} />
-              ))}
-            </div>
-          } />
-          <Route path="/pokemon/:id" element={<PokemonDetail />} />
-        </Routes>
+  {getItem({ key: 'login' }) === undefined ? (
+    <>
+      <Route path="/" element={
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
+      } />
+      <Route path="/pokemon/:id" element={<PokemonDetail />} />
+    </>
+  ) : (
+    <>
+      <Route path="/" element={<LoginSign />} />
+      {/* Optionally redirect /pokemon/:id if needed when logged in */}
+      {/* <Route path="/pokemon/:id" element={<Navigate to="/" />} /> */}
+    </>
+  )}
+</Routes>
       </div>
     </div>
   );
